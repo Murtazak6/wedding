@@ -61,7 +61,7 @@ export default function MainContent({ config }: MainContentProps) {
               </div>
               <div className="text-center space-y-2">
                 <p className="text-3xl md:text-4xl font-arabic text-primary">
-                  {couple.groomArabic} و {couple.brideArabic}
+                  {couple.groomArabic} , {couple.brideArabic}
                 </p>
                 <h3 className="text-xl md:text-2xl font-serif text-secondary tracking-wide">
                   ({couple.groom} & {couple.bride})
@@ -168,7 +168,7 @@ export default function MainContent({ config }: MainContentProps) {
             <div className="py-6 space-y-8">
               <div className="space-y-2">
                 <h3 className="text-4xl md:text-6xl font-arabic text-primary">
-                  {config.families.couple1.groomArabic} و {config.families.couple1.brideArabic}
+                  {config.families.couple1.groomArabic} , {config.families.couple1.brideArabic}
                 </h3>
                 <p className="text-lg md:text-xl font-serif opacity-60">
                   ({config.families.couple1.groom} & {config.families.couple1.bride})
@@ -183,7 +183,7 @@ export default function MainContent({ config }: MainContentProps) {
 
               <div className="space-y-2">
                 <h3 className="text-4xl md:text-6xl font-arabic text-primary">
-                  {config.families.couple2.groomArabic} و {config.families.couple2.brideArabic}
+                  {config.families.couple2.groomArabic} , {config.families.couple2.brideArabic}
                 </h3>
                 <p className="text-lg md:text-xl font-serif opacity-60">
                   ({config.families.couple2.groom} & {config.families.couple2.bride})

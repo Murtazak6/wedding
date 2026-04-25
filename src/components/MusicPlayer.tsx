@@ -19,21 +19,30 @@ export default function MusicPlayer({ src }: MusicPlayerProps) {
     // Show tooltip after a short delay
     const timer = setTimeout(() => setShowTooltip(true), 3000);
     
-    // Auto-play attempt
-    const playTimer = setTimeout(() => {
+    const playAudio = async () => {
       if (audioRef.current) {
-        audioRef.current.play().then(() => {
+        try {
+          // Reset audio to start
+          audioRef.current.currentTime = 0;
+          await audioRef.current.play();
           setIsPlaying(true);
           setShowTooltip(false);
-        }).catch(() => console.log("Auto-play blocked, waiting for interaction"));
+          console.log("Audio playing successfully");
+        } catch (error) {
+          console.log("Playback failed initially, will retry on next interaction:", error);
+          // If auto-play fails, we keep isPlaying as false so the user can click the button
+        }
       }
-    }, 500);
+    };
+
+    // Small delay to ensure the DOM is ready and interaction is registered
+    const playTimer = setTimeout(playAudio, 1000);
 
     return () => {
       clearTimeout(timer);
       clearTimeout(playTimer);
     };
-  }, []);
+  }, [src]);
 
   const togglePlay = () => {
     if (audioRef.current) {

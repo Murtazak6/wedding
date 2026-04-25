@@ -50,7 +50,7 @@ export const weddingConfig = {
     "/images/MM.jpeg"
   ],
   audio: {
-    src: "/audio/nasheed-instrumental.mp3", // Placeholder
+    src: "/audio/background.mp3",
     enabled: true
   },
   social: {

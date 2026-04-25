@@ -19,8 +19,8 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
     "With immense joy and gratitude...",
     "With the blessings and duas of Syedna Mufaddal Saifuddin (TUS)...",
     "We invite you to celebrate the sacred union of...",
-    `${config.families.couple1.groomArabic} و ${config.families.couple1.brideArabic} (${config.families.couple1.groom} & ${config.families.couple1.bride})`,
-    `${config.families.couple2.groomArabic} و ${config.families.couple2.brideArabic} (${config.families.couple2.groom} & ${config.families.couple2.bride})`
+    `${config.families.couple1.groomArabic} , ${config.families.couple1.brideArabic} (${config.families.couple1.groom} & ${config.families.couple1.bride})`,
+    `${config.families.couple2.groomArabic} , ${config.families.couple2.brideArabic} (${config.families.couple2.groom} & ${config.families.couple2.bride})`
   ];
 
   const couple1Index = sequence.length - 2;
@@ -121,8 +121,8 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
                   </motion.p>
                   <h2 className="text-3xl md:text-5xl font-arabic text-white drop-shadow-lg">
                     {index === couple1Index ? 
-                      `${config.families.couple1.groomArabic} و ${config.families.couple1.brideArabic}` : 
-                      `${config.families.couple2.groomArabic} و ${config.families.couple2.brideArabic}`
+                      `${config.families.couple1.groomArabic}, ${config.families.couple1.brideArabic}` : 
+                      `${config.families.couple2.groomArabic}, ${config.families.couple2.brideArabic}`
                     }
                   </h2>
                   <p className="text-xl md:text-2xl font-serif text-primary/90">
