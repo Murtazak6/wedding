@@ -27,11 +27,18 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
   const couple2Index = sequence.length - 1;
 
   useEffect(() => {
-    if (index < sequence.length - 1) {
-      const timer = setTimeout(() => setIndex(idx => idx + 1), 3500);
-      return () => clearTimeout(timer);
-    }
-  }, [index, sequence.length]);
+    const isCoupleSlide = index >= couple1Index;
+    const timer = setTimeout(() => {
+      if (index < sequence.length - 1) {
+        setIndex(idx => idx + 1);
+      } else {
+        // Carousel: Loop back to the first couple
+        setIndex(couple1Index);
+      }
+    }, isCoupleSlide ? 6000 : 3500);
+    
+    return () => clearTimeout(timer);
+  }, [index, sequence.length, couple1Index]);
 
   const getBackgroundImage = () => {
     if (index === couple1Index) return config.families.couple1.image;
@@ -137,13 +144,24 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
           </motion.div>
         </AnimatePresence>
 
-        {index === sequence.length - 1 && (
+        {index >= couple1Index && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="mt-12"
+            transition={{ duration: 1 }}
+            className="mt-12 flex flex-col items-center gap-4"
           >
+            {/* Stay Tuned Section */}
+            <div className="text-center space-y-2">
+              <p className="text-white/80 font-serif text-lg md:text-xl tracking-wide">
+                15th Jan - 17th Jan 2027
+              </p>
+              <p className="text-primary font-sans tracking-[0.4em] uppercase text-xs md:text-sm font-medium">
+                Stay Tuned
+              </p>
+            </div>
+
+            {/* 
             <button
               onClick={onComplete}
               className="group flex items-center gap-2 text-primary font-sans tracking-[0.4em] uppercase text-[10px] border-b border-primary/30 pb-2 hover:border-primary transition-all bg-secondary/40 backdrop-blur-sm px-6 py-2 rounded-t-sm"
@@ -151,6 +169,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
               Enter Invitation
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
+            */}
           </motion.div>
         )}
       </div>
