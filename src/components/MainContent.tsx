@@ -111,11 +111,18 @@ export default function MainContent({ config }: MainContentProps) {
             >
               <h3 className="text-2xl font-serif text-secondary mb-6 border-b border-primary/10 pb-4">{event.name}</h3>
               <div className="space-y-4">
-                <div className="flex items-center gap-4 text-gray-700">
-                  <Calendar className="w-5 h-5 text-primary" />
-                  <span className="font-sans">
-                    <SafeDateFormat date={event.date} />
-                  </span>
+                <div className="flex items-start gap-4 text-gray-700">
+                  <Calendar className="w-5 h-5 text-primary mt-1" />
+                  <div className="flex flex-col">
+                    <span className="font-sans">
+                      <SafeDateFormat date={event.date} />
+                    </span>
+                    {event.hijriDate && (
+                      <span className="font-sans text-sm text-primary/80 font-medium">
+                        {event.hijriDate}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="flex items-center gap-4 text-gray-700">
                   <Clock className="w-5 h-5 text-primary" />

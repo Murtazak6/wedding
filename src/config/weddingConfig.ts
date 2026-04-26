@@ -1,5 +1,3 @@
-import { init } from "next/dist/compiled/webpack/webpack";
-
 export const weddingConfig = {
   families: {
     couple1: {
@@ -25,6 +23,7 @@ export const weddingConfig = {
     {
       name: "Katho-Mandvo",
       date: "2027-01-15",
+      hijriDate: "8th Shaban 1448H",
       time: "10:00 AM",
       venue: "Amakin Mohammadiyah Phase III",
       address: "Noorani Rd, Dombivli, Dombivli East, Kalyan, Maharashtra 421203",
@@ -33,6 +32,7 @@ export const weddingConfig = {
     {
       name: "Reception",
       date: "2027-01-17",
+      hijriDate: "10th Shaban 1448H",
       time: "7:00 PM",
       venue: "Taiyebi Masjid (Dawoodi Bohra)",
       address: "133, Kazi Syed St, Mandvi Koliwada, Vadgadi, Masjid Bandar West, Masjid Bandar, Mumbai, Maharashtra 400003",

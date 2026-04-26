@@ -170,6 +170,9 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
               <p className="text-white/80 font-serif text-lg md:text-xl tracking-wide">
                 15th Jan - 17th Jan 2027
               </p>
+              <p className="text-white/80 font-serif text-lg md:text-xl tracking-wide">
+                 ٨ شعبان ١٤٤٨ - ١٠ شعبان ١٤٤٨ هـ
+              </p>
               <p className="text-primary font-sans tracking-[0.4em] uppercase text-xs md:text-sm font-medium">
                 Stay Tuned
               </p>
