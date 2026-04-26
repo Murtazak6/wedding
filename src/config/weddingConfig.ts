@@ -7,7 +7,7 @@ export const weddingConfig = {
       bride: "Zahra",
       groomArabic: "مرتضى",
       brideArabic: "زهرة",
-      image: "/images/MZ2.png",
+      image: "/images/MZ5.jpeg",
       initial_img: "/images/MZInitials.jpeg"
     },
     couple2: {
@@ -15,7 +15,7 @@ export const weddingConfig = {
       bride: "Mubarakah",
       groomArabic: "مستنصر",
       brideArabic: "مباركة",
-      image: "/images/MM3.png",
+      image: "/images/MM5.jpeg",
       initial_img: "/images/MMInitials.jpeg"
     },
     familyName: "Kankroliwala Family",
