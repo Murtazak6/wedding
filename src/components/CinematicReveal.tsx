@@ -79,7 +79,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
             <div className="relative w-full h-1/2 md:w-1/2 md:h-full">
               <Image
                 src={config.families.couple1.initial_img}
-                alt="Initials 1"
+                alt={`${config.families.couple1.groom} & ${config.families.couple1.bride} Initials`}
                 fill
                 className="object-cover opacity-60"
                 unoptimized
@@ -88,7 +88,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
             <div className="relative w-full h-1/2 md:w-1/2 md:h-full border-t md:border-t-0 md:border-l border-primary/10">
               <Image
                 src={config.families.couple2.initial_img}
-                alt="Initials 2"
+                alt={`${config.families.couple2.groom} & ${config.families.couple2.bride} Initials`}
                 fill
                 className="object-cover opacity-60"
                 unoptimized

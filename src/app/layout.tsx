@@ -20,7 +20,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: weddingConfig.social.title,
     description: weddingConfig.social.description,
-    images: [weddingConfig.social.image],
+    images: weddingConfig.social.images,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: weddingConfig.social.title,
+    description: weddingConfig.social.description,
+    images: weddingConfig.social.images,
   },
 };
 

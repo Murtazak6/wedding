@@ -44,7 +44,7 @@ export default function Envelope({ config, onOpen }: EnvelopeProps) {
               >
                 <img 
                   src={config.families.couple1.initial_img} 
-                  alt="Couple 1 Initials" 
+                  alt={`${config.families.couple1.groom} & ${config.families.couple1.bride} Initials`} 
                   className="w-24 md:w-32 h-auto object-contain drop-shadow-[0_5px_15px_rgba(197,164,109,0.3)]" 
                 />
               </motion.div>
@@ -57,7 +57,7 @@ export default function Envelope({ config, onOpen }: EnvelopeProps) {
               >
                 <img 
                   src={config.families.couple2.initial_img} 
-                  alt="Couple 2 Initials" 
+                  alt={`${config.families.couple2.groom} & ${config.families.couple2.bride} Initials`} 
                   className="w-24 md:w-32 h-auto object-contain drop-shadow-[0_5px_15px_rgba(197,164,109,0.3)]" 
                 />
               </motion.div>
