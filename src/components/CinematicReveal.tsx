@@ -38,13 +38,9 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
     return () => clearTimeout(timer);
   }, [index, sequence.length, couple1Index]);
 
-  const getBackgroundImage = () => {
-    if (index === couple1Index) return config.families.couple1.image;
-    if (index === couple2Index) return config.families.couple2.image;
-    return null;
-  };
-
-  const backgroundImage = getBackgroundImage();
+  const isCouplePage = index === couple1Index || index === couple2Index;
+  const backgroundImage = index === couple1Index ? config.families.couple1.image : 
+                        index === couple2Index ? config.families.couple2.image : null;
 
   return (
     <motion.div 
@@ -55,7 +51,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
     >
       {/* Background Cinematic Images */}
       <AnimatePresence mode="wait">
-        {backgroundImage ? (
+        {isCouplePage ? (
           <motion.div
             key={backgroundImage}
             initial={{ opacity: 0, scale: 1.1 }}
@@ -65,7 +61,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
             className="absolute inset-0 z-0"
           >
             <Image
-              src={backgroundImage}
+              src={backgroundImage!}
               alt="Couple Photo"
               fill
               className="object-cover object-top"
@@ -74,12 +70,32 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
           </motion.div>
         ) : (
           <motion.div 
-            key="pattern"
+            key="initials"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.05 }}
+            animate={{ opacity: 0.15 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 islamic-pattern z-0" 
-          />
+            className="absolute inset-0 z-0 flex flex-col md:flex-row"
+          >
+            <div className="relative w-full h-1/2 md:w-1/2 md:h-full">
+              <Image
+                src={config.families.couple1.initial_img}
+                alt="Initials 1"
+                fill
+                className="object-cover opacity-60"
+                unoptimized
+              />
+            </div>
+            <div className="relative w-full h-1/2 md:w-1/2 md:h-full border-t md:border-t-0 md:border-l border-primary/10">
+              <Image
+                src={config.families.couple2.initial_img}
+                alt="Initials 2"
+                fill
+                className="object-cover opacity-60"
+                unoptimized
+              />
+            </div>
+            <div className="absolute inset-0 islamic-pattern opacity-10" />
+          </motion.div>
         )}
       </AnimatePresence>
 
