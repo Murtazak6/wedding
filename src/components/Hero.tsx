@@ -75,8 +75,8 @@ export default function Hero({ config }: HeroProps) {
               <div className="text-3xl md:text-5xl font-arabic text-primary">
                 {config.families.couple1.groomArabic} , {config.families.couple1.brideArabic}
               </div>
-              <div className="text-xl md:text-2xl font-serif opacity-80">
-                ({config.families.couple1.groom} & {config.families.couple1.bride})
+              <div className="text-2xl md:text-4xl font-accent text-primary">
+                {config.families.couple1.groom} & {config.families.couple1.bride}
               </div>
             </div>
 
@@ -90,8 +90,8 @@ export default function Hero({ config }: HeroProps) {
               <div className="text-3xl md:text-5xl font-arabic text-primary">
                 {config.families.couple2.groomArabic} , {config.families.couple2.brideArabic}
               </div>
-              <div className="text-xl md:text-2xl font-serif opacity-80">
-                ({config.families.couple2.groom} & {config.families.couple2.bride})
+              <div className="text-2xl md:text-4xl font-accent text-primary">
+                {config.families.couple2.groom} & {config.families.couple2.bride}
               </div>
             </div>
           </div>

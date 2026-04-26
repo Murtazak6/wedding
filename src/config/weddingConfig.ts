@@ -1,3 +1,5 @@
+import { init } from "next/dist/compiled/webpack/webpack";
+
 export const weddingConfig = {
   families: {
     couple1: {
@@ -5,14 +7,16 @@ export const weddingConfig = {
       bride: "Zahra",
       groomArabic: "مرتضى",
       brideArabic: "زهرة",
-      image: "/images/MZ1.jpeg",
+      image: "/images/MZ2.png",
+      initial_img: "/images/MZInitials.jpeg"
     },
     couple2: {
       groom: "Mustansir",
       bride: "Mubarakah",
       groomArabic: "مستنصر",
       brideArabic: "مباركة",
-      image: "/images/MM1.jpeg",
+      image: "/images/MM3.png",
+      initial_img: "/images/MMInitials.jpeg"
     },
     familyName: "Kankroliwala Family",
     message: "May Allah bless these unions with سعادة (happiness), بركة (barakat), and رحمة (mercy). Your presence will honor our celebration."
@@ -59,11 +63,9 @@ export const weddingConfig = {
     image: "/images/og-image.jpg"
   },
   announcement: {
-    intro: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+    intro: "Kankroliwala Family is delighted to announce the wedding of their beloved children...",
     sequence: [
-      "With immense joy and gratitude...",
-      "With the blessings and duas of Syedna Mufaddal Saifuddin (TUS)...",
-      "We invite you to celebrate the sacred union of..."
+      "With the blessings and duas of Syedna Mufaddal Saifuddin (TUS) \n We invite you to celebrate the sacred union of...",
     ]
   },
   stayTuned: {

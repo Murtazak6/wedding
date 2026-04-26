@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Amiri, Montserrat } from "next/font/google";
+import { Amiri, Montserrat } from "next/font/google";
 import "./globals.css";
 import { weddingConfig } from "@/config/weddingConfig";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-});
 
 const amiri = Amiri({
   weight: ["400", "700"],
@@ -37,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${playfair.variable} ${amiri.variable} ${montserrat.variable} font-sans antialiased bg-[#FDFBF7] text-[#1A1A1A]`}
+        className={`${amiri.variable} ${montserrat.variable} font-serif antialiased bg-[#FDFBF7] text-[#1A1A1A]`}
       >
         {children}
       </body>

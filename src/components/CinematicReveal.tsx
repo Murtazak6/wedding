@@ -16,9 +16,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
   
   const sequence = [
     config.announcement.intro,
-    "With immense joy and gratitude...",
-    "With the blessings and duas of Syedna Mufaddal Saifuddin (TUS)...",
-    "We invite you to celebrate the sacred union of...",
+    ...config.announcement.sequence,
     `${config.families.couple1.groomArabic} , ${config.families.couple1.brideArabic} (${config.families.couple1.groom} & ${config.families.couple1.bride})`,
     `${config.families.couple2.groomArabic} , ${config.families.couple2.brideArabic} (${config.families.couple2.groom} & ${config.families.couple2.bride})`
   ];
@@ -132,11 +130,11 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
                       `${config.families.couple2.groomArabic}, ${config.families.couple2.brideArabic}`
                     }
                   </h2>
-                  <p className="text-xl md:text-2xl font-serif text-primary/90">
-                    ({index === couple1Index ? 
+                  <p className="text-3xl md:text-5xl font-accent text-primary">
+                    {index === couple1Index ? 
                       `${config.families.couple1.groom} & ${config.families.couple1.bride}` : 
                       `${config.families.couple2.groom} & ${config.families.couple2.bride}`
-                    })
+                    }
                   </p>
                 </div>
               </div>

@@ -63,8 +63,8 @@ export default function MainContent({ config }: MainContentProps) {
                 <p className="text-3xl md:text-4xl font-arabic text-primary">
                   {couple.groomArabic} , {couple.brideArabic}
                 </p>
-                <h3 className="text-xl md:text-2xl font-serif text-secondary tracking-wide">
-                  ({couple.groom} & {couple.bride})
+                <h3 className="text-3xl md:text-4xl font-accent text-primary">
+                  {couple.groom} & {couple.bride}
                 </h3>
               </div>
             </motion.div>
@@ -165,13 +165,12 @@ export default function MainContent({ config }: MainContentProps) {
               We invite you to celebrate the sacred union of
             </p>
             
-            <div className="py-6 space-y-8">
               <div className="space-y-2">
                 <h3 className="text-4xl md:text-6xl font-arabic text-primary">
                   {config.families.couple1.groomArabic} , {config.families.couple1.brideArabic}
                 </h3>
-                <p className="text-lg md:text-xl font-serif opacity-60">
-                  ({config.families.couple1.groom} & {config.families.couple1.bride})
+                <p className="text-2xl md:text-4xl font-accent text-primary">
+                  {config.families.couple1.groom} & {config.families.couple1.bride}
                 </p>
               </div>
 
@@ -185,11 +184,10 @@ export default function MainContent({ config }: MainContentProps) {
                 <h3 className="text-4xl md:text-6xl font-arabic text-primary">
                   {config.families.couple2.groomArabic} , {config.families.couple2.brideArabic}
                 </h3>
-                <p className="text-lg md:text-xl font-serif opacity-60">
-                  ({config.families.couple2.groom} & {config.families.couple2.bride})
+                <p className="text-2xl md:text-4xl font-accent text-primary">
+                  {config.families.couple2.groom} & {config.families.couple2.bride}
                 </p>
               </div>
-            </div>
             
             <p className="text-lg md:text-xl font-serif italic text-primary leading-relaxed max-w-2xl mx-auto">
               May Allah bless these unions with سعادة (happiness), بركة (barakat), and رحمة (mercy).
