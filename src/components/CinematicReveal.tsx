@@ -13,7 +13,7 @@ interface CinematicRevealProps {
 
 export default function CinematicReveal({ config, onComplete }: CinematicRevealProps) {
   const [index, setIndex] = useState(0);
-  
+
   const sequence = [
     config.announcement.intro,
     ...config.announcement.sequence,
@@ -34,16 +34,16 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
         setIndex(couple1Index);
       }
     }, isCoupleSlide ? 6000 : 4500);
-    
+
     return () => clearTimeout(timer);
   }, [index, sequence.length, couple1Index]);
 
   const isCouplePage = index === couple1Index || index === couple2Index;
-  const backgroundImage = index === couple1Index ? config.families.couple1.image : 
-                        index === couple2Index ? config.families.couple2.image : null;
+  const backgroundImage = index === couple1Index ? config.families.couple1.image :
+    index === couple2Index ? config.families.couple2.image : null;
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -69,7 +69,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
             />
           </motion.div>
         ) : (
-          <motion.div 
+          <motion.div
             key="initials"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.15 }}
@@ -100,7 +100,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
       </AnimatePresence>
 
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/80 via-transparent to-secondary/80 z-1" />
-      
+
       <div className="relative max-w-4xl w-full z-10 flex flex-col items-center">
         <AnimatePresence mode="wait">
           <motion.div
@@ -133,7 +133,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
                 </motion.div>
 
                 <div className="space-y-3">
-                  <motion.p 
+                  <motion.p
                     initial={{ opacity: 0, letterSpacing: "0.1em" }}
                     animate={{ opacity: 0.6, letterSpacing: "0.3em" }}
                     className="text-primary uppercase text-[10px] md:text-xs font-sans"
@@ -141,14 +141,14 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
                     Celebrating the sacred union of
                   </motion.p>
                   <h2 className="text-3xl md:text-5xl font-arabic text-white drop-shadow-lg">
-                    {index === couple1Index ? 
-                      `${config.families.couple1.groomArabic}, ${config.families.couple1.brideArabic}` : 
+                    {index === couple1Index ?
+                      `${config.families.couple1.groomArabic}, ${config.families.couple1.brideArabic}` :
                       `${config.families.couple2.groomArabic}, ${config.families.couple2.brideArabic}`
                     }
                   </h2>
                   <p className="text-3xl md:text-5xl font-accent text-primary">
-                    {index === couple1Index ? 
-                      `${config.families.couple1.groom} & ${config.families.couple1.bride}` : 
+                    {index === couple1Index ?
+                      `${config.families.couple1.groom} & ${config.families.couple1.bride}` :
                       `${config.families.couple2.groom} & ${config.families.couple2.bride}`
                     }
                   </p>
@@ -160,19 +160,26 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
 
         {index >= couple1Index && (
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="mt-12 flex flex-col items-center gap-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="mt-12 flex flex-col items-center gap-4"
           >
+            <hr/>
             {/* Stay Tuned Section */}
             <div className="text-center space-y-2">
               <p className="text-white/80 font-serif text-lg md:text-xl tracking-wide">
                 15th Jan - 17th Jan 2027
               </p>
-              <p className="text-white/80 font-serif text-lg md:text-xl tracking-wide">
-                 ٨ شعبان ١٤٤٨ - ١٠ شعبان ١٤٤٨ هـ
-              </p>
+              <span className="text-white/80 font-serif text-lg md:text-xl tracking-wide">
+                ٨ شعبان ١٤٤٨ - ١٠ شعبان ١٤٤٨ هـ
+              </span>
+              <br/>
+              <span className="text-white/80 font-serif text-md md:text-lg tracking-wide">
+                8th Shaban 1448H - 10th Shaban 1448H
+              </span>
+              <hr />
+
               <p className="text-primary font-sans tracking-[0.4em] uppercase text-xs md:text-sm font-medium">
                 Stay Tuned
               </p>
@@ -194,8 +201,8 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
       {/* Progress Indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {sequence.map((_, i) => (
-          <div 
-            key={i} 
+          <div
+            key={i}
             className={`w-1 h-1 md:w-1.5 md:h-1.5 rounded-full transition-all duration-500 ${i === index ? "bg-primary w-4 md:w-6" : "bg-primary/20"}`}
           />
         ))}
