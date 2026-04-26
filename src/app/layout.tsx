@@ -15,6 +15,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://wedding-invite-kankroliwala.netlify.app"),
   title: weddingConfig.social.title,
   description: weddingConfig.social.description,
   openGraph: {
