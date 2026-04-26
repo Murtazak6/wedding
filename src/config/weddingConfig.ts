@@ -63,7 +63,7 @@ export const weddingConfig = {
     image: "/images/og-image.jpg"
   },
   announcement: {
-    intro: "Kankroliwala Family is delighted to announce the wedding of their beloved children...",
+    intro: "The Kankroliwala Family \n is delighted to announce the weddings of their sons.",
     sequence: [
       "With the blessings and duas of Syedna Mufaddal Saifuddin (TUS) \n We invite you to celebrate the sacred union of...",
     ]

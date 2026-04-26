@@ -33,7 +33,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
         // Carousel: Loop back to the first couple
         setIndex(couple1Index);
       }
-    }, isCoupleSlide ? 6000 : 3500);
+    }, isCoupleSlide ? 6000 : 4500);
     
     return () => clearTimeout(timer);
   }, [index, sequence.length, couple1Index]);
