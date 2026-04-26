@@ -61,9 +61,7 @@ export const weddingConfig = {
     title: "Save the Date - Murtaza & Zahra | Mustansir & Mubarakah",
     description: "Join the Kankroliwala Family for the wedding celebrations.",
     images: [
-      "/images/combinedInitials.png",
-      "/images/MZInitials.jpeg",
-      "/images/MMInitials.jpeg"
+      "/images/combinedInitials.png"
     ]
   },
   announcement: {
