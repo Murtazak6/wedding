@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { WeddingConfig } from "@/config/weddingConfig";
+import { WeddingConfig } from "@/types/wedding";
 import BackgroundCarousel from "./BackgroundCarousel";
 
 interface HeroProps {
@@ -80,20 +80,24 @@ export default function Hero({ config }: HeroProps) {
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-4 opacity-40">
-              <div className="h-[1px] w-8 bg-primary" />
-              <span className="font-serif italic text-xs">and</span>
-              <div className="h-[1px] w-8 bg-primary" />
-            </div>
+            {config.families.couple2 && (
+              <>
+                <div className="flex items-center justify-center gap-4 opacity-40">
+                  <div className="h-[1px] w-8 bg-primary" />
+                  <span className="font-serif italic text-xs">and</span>
+                  <div className="h-[1px] w-8 bg-primary" />
+                </div>
 
-            <div className="space-y-2">
-              <div className="text-3xl md:text-5xl font-arabic text-primary">
-                {config.families.couple2.groomArabic} , {config.families.couple2.brideArabic}
-              </div>
-              <div className="text-2xl md:text-4xl font-accent text-primary">
-                {config.families.couple2.groom} & {config.families.couple2.bride}
-              </div>
-            </div>
+                <div className="space-y-2">
+                  <div className="text-3xl md:text-5xl font-arabic text-primary">
+                    {config.families.couple2.groomArabic} , {config.families.couple2.brideArabic}
+                  </div>
+                  <div className="text-2xl md:text-4xl font-accent text-primary">
+                    {config.families.couple2.groom} & {config.families.couple2.bride}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </motion.div>
 

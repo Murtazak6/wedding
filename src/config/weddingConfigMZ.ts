@@ -10,18 +10,19 @@ export const weddingConfig: WeddingConfig = {
       image: "/images/MZ5.jpeg",
       initial_img: "/images/MZInitials.jpeg"
     },
-    couple2: {
-      groom: "Mustansir",
-      bride: "Mubarakah",
-      groomArabic: "مستنصر",
-      brideArabic: "مباركة",
-      image: "/images/MM5.jpeg",
-      initial_img: "/images/MMInitials.jpeg"
-    },
-    familyName: "Kankroliwala Family",
-    message: "May Allah bless these unions with سعادة (happiness), بركة (barakat), and رحمة (mercy). Your presence will honor our celebration."
+    familyName: "Hafiz Family",
+    message: "May Allah bless this union with سعادة (happiness), بركة (barakat), and رحمة (mercy). Your presence will honor our celebration."
   },
   events: [
+    {
+      name: "Katho-Mandvo",
+      date: "2027-01-09",
+      hijriDate: "٢ شعبان ١٤٤٨هـ",
+      time: "10:00 AM",
+      venue: "",
+      address: "",
+      googleMapsUrl: ""
+    },
     {
       name: "Katho-Mandvo",
       date: "2027-01-15",
@@ -48,32 +49,34 @@ export const weddingConfig: WeddingConfig = {
     textColor: "#1A1A1A",
   },
   video: {
-    src: "/images/background-video.mp4", // Path to local video
-    enabled: false // Disabled by default to show carousel
+    src: "/images/background-video.mp4",
+    enabled: false
   },
   heroImages: [
     "/images/MZ.jpeg",
-    "/images/MM.jpeg"
+    "/images/MZ1.jpeg",
+    "/images/MZ2.png",
+    "/images/MZ5.jpeg"
   ],
   audio: {
     src: "/audio/background.mp3",
     enabled: true
   },
   social: {
-    title: "Save the Date - Murtaza & Zahra | Mustansir & Mubarakah",
-    description: "Join the Kankroliwala Family for the wedding celebrations.",
+    title: "Save the Date - Murtaza & Zahra",
+    description: "Join the Hafiz Family for the wedding celebrations.",
     images: [
-      "/images/combinedinitials.png"
+      "/images/MZInitials.jpeg"
     ]
   },
   announcement: {
-    intro: "The Kankroliwala Family \n is delighted to announce the weddings of their sons.",
+    intro: "The Hafiz Family \n is delighted to announce the wedding of their son.",
     sequence: [
       "With the blessings and duas of Syedna Mufaddal Saifuddin (TUS) \n We invite you to celebrate the sacred union of...",
     ]
   },
   stayTuned: {
     message: "",
-    subtext: "Please keep the couples in your prayers."
+    subtext: "Please keep the couple in your prayers."
   }
 };

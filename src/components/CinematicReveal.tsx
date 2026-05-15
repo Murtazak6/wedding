@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { WeddingConfig } from "@/config/weddingConfig";
+import { WeddingConfig } from "@/types/wedding";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 
@@ -14,33 +14,36 @@ interface CinematicRevealProps {
 export default function CinematicReveal({ config, onComplete }: CinematicRevealProps) {
   const [index, setIndex] = useState(0);
 
+  const couples = [config.families.couple1];
+  if (config.families.couple2) {
+    couples.push(config.families.couple2);
+  }
+
   const sequence = [
     config.announcement.intro,
     ...config.announcement.sequence,
-    `${config.families.couple1.groomArabic} , ${config.families.couple1.brideArabic} (${config.families.couple1.groom} & ${config.families.couple1.bride})`,
-    `${config.families.couple2.groomArabic} , ${config.families.couple2.brideArabic} (${config.families.couple2.groom} & ${config.families.couple2.bride})`
+    ...couples.map(c => `${c.groomArabic} , ${c.brideArabic} (${c.groom} & ${c.bride})`)
   ];
 
-  const couple1Index = sequence.length - 2;
-  const couple2Index = sequence.length - 1;
+  const firstCoupleIndex = sequence.length - couples.length;
 
   useEffect(() => {
-    const isCoupleSlide = index >= couple1Index;
+    const isCoupleSlide = index >= firstCoupleIndex;
     const timer = setTimeout(() => {
       if (index < sequence.length - 1) {
         setIndex(idx => idx + 1);
       } else {
         // Carousel: Loop back to the first couple
-        setIndex(couple1Index);
+        setIndex(firstCoupleIndex);
       }
     }, isCoupleSlide ? 6000 : 4500);
 
     return () => clearTimeout(timer);
-  }, [index, sequence.length, couple1Index]);
+  }, [index, sequence.length, firstCoupleIndex]);
 
-  const isCouplePage = index === couple1Index || index === couple2Index;
-  const backgroundImage = index === couple1Index ? config.families.couple1.image :
-    index === couple2Index ? config.families.couple2.image : null;
+  const isCouplePage = index >= firstCoupleIndex;
+  const currentCouple = isCouplePage ? couples[index - firstCoupleIndex] : null;
+  const backgroundImage = currentCouple?.image;
 
   return (
     <motion.div
@@ -76,7 +79,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
             exit={{ opacity: 0 }}
             className="absolute inset-0 z-0 flex flex-col md:flex-row"
           >
-            <div className="relative w-full h-1/2 md:w-1/2 md:h-full">
+            <div className={`relative w-full ${couples.length > 1 ? "h-1/2 md:w-1/2 md:h-full" : "h-full md:w-full"}`}>
               <Image
                 src={config.families.couple1.initial_img}
                 alt={`${config.families.couple1.groom} & ${config.families.couple1.bride} Initials`}
@@ -85,15 +88,17 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
                 unoptimized
               />
             </div>
-            <div className="relative w-full h-1/2 md:w-1/2 md:h-full border-t md:border-t-0 md:border-l border-primary/10">
-              <Image
-                src={config.families.couple2.initial_img}
-                alt={`${config.families.couple2.groom} & ${config.families.couple2.bride} Initials`}
-                fill
-                className="object-cover opacity-60"
-                unoptimized
-              />
-            </div>
+            {config.families.couple2 && (
+              <div className="relative w-full h-1/2 md:w-1/2 md:h-full border-t md:border-t-0 md:border-l border-primary/10">
+                <Image
+                  src={config.families.couple2.initial_img}
+                  alt={`${config.families.couple2.groom} & ${config.families.couple2.bride} Initials`}
+                  fill
+                  className="object-cover opacity-60"
+                  unoptimized
+                />
+              </div>
+            )}
             <div className="absolute inset-0 islamic-pattern opacity-10" />
           </motion.div>
         )}
@@ -111,7 +116,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="space-y-8 flex flex-col items-center w-full"
           >
-            {index < couple1Index ? (
+            {index < firstCoupleIndex ? (
               <h2 className={`text-2xl md:text-5xl font-serif text-primary leading-tight px-4 ${index === 0 ? "text-4xl md:text-6xl font-arabic" : ""}`}>
                 {sequence[index]}
               </h2>
@@ -124,7 +129,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
                   className="relative w-48 h-64 md:w-64 md:h-80 rounded-lg overflow-hidden border-2 border-primary/30 shadow-2xl"
                 >
                   <Image
-                    src={index === couple1Index ? config.families.couple1.image : config.families.couple2.image}
+                    src={currentCouple!.image}
                     alt="Couple"
                     fill
                     className="object-cover object-top"
@@ -141,16 +146,10 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
                     Celebrating the sacred union of
                   </motion.p>
                   <h2 className="text-3xl md:text-5xl font-arabic text-white drop-shadow-lg">
-                    {index === couple1Index ?
-                      `${config.families.couple1.groomArabic}, ${config.families.couple1.brideArabic}` :
-                      `${config.families.couple2.groomArabic}, ${config.families.couple2.brideArabic}`
-                    }
+                    {currentCouple!.groomArabic}, {currentCouple!.brideArabic}
                   </h2>
                   <p className="text-3xl md:text-5xl font-accent text-primary">
-                    {index === couple1Index ?
-                      `${config.families.couple1.groom} & ${config.families.couple1.bride}` :
-                      `${config.families.couple2.groom} & ${config.families.couple2.bride}`
-                    }
+                    {currentCouple!.groom} & {currentCouple!.bride}
                   </p>
                 </div>
               </div>
@@ -158,7 +157,7 @@ export default function CinematicReveal({ config, onComplete }: CinematicRevealP
           </motion.div>
         </AnimatePresence>
 
-        {index >= couple1Index && (
+        {index >= firstCoupleIndex && (
           <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}

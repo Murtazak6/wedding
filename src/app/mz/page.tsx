@@ -1,5 +1,5 @@
 import InvitationTemplate from "@/components/InvitationTemplate";
-import { weddingConfig } from "@/config/weddingConfig";
+import { weddingConfig } from "@/config/weddingConfigMZ";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,6 +12,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CombinedPage() {
+export default function MZPage() {
   return <InvitationTemplate config={weddingConfig} />;
 }

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { Calendar, MapPin, Clock } from "lucide-react";
 import SafeDateFormat from "./SafeDateFormat";
-import { WeddingConfig } from "@/config/weddingConfig";
+import { WeddingConfig } from "@/types/wedding";
 
 interface MainContentProps {
   config: WeddingConfig;
@@ -24,6 +24,11 @@ const sectionVariants: Variants = {
 };
 
 export default function MainContent({ config }: MainContentProps) {
+  const couples = [config.families.couple1];
+  if (config.families.couple2) {
+    couples.push(config.families.couple2);
+  }
+
   return (
     <div className="relative z-10 bg-accent islamic-pattern">
       {/* Couples Announcement */}
@@ -35,12 +40,14 @@ export default function MainContent({ config }: MainContentProps) {
           variants={sectionVariants}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-serif text-secondary mb-4">The Happy Couples</h2>
+          <h2 className="text-3xl md:text-5xl font-serif text-secondary mb-4">
+            {couples.length > 1 ? "The Happy Couples" : "The Happy Couple"}
+          </h2>
           <div className="w-24 h-1 bg-primary mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-24">
-          {[config.families.couple1, config.families.couple2].map((couple, idx) => (
+        <div className={`grid gap-12 lg:gap-24 ${couples.length > 1 ? "md:grid-cols-2" : "max-w-md mx-auto"}`}>
+          {couples.map((couple, idx) => (
             <motion.div
               key={idx}
               initial="hidden"
@@ -172,6 +179,7 @@ export default function MainContent({ config }: MainContentProps) {
               We invite you to celebrate the sacred union of
             </p>
             
+            <div className="space-y-8">
               <div className="space-y-2">
                 <h3 className="text-4xl md:text-6xl font-arabic text-primary">
                   {config.families.couple1.groomArabic} , {config.families.couple1.brideArabic}
@@ -181,23 +189,28 @@ export default function MainContent({ config }: MainContentProps) {
                 </p>
               </div>
 
-              <div className="flex items-center justify-center gap-4 opacity-30">
-                <div className="h-[1px] w-12 bg-primary" />
-                <span className="font-serif italic text-sm">and</span>
-                <div className="h-[1px] w-12 bg-primary" />
-              </div>
+              {config.families.couple2 && (
+                <>
+                  <div className="flex items-center justify-center gap-4 opacity-30">
+                    <div className="h-[1px] w-12 bg-primary" />
+                    <span className="font-serif italic text-sm">and</span>
+                    <div className="h-[1px] w-12 bg-primary" />
+                  </div>
 
-              <div className="space-y-2">
-                <h3 className="text-4xl md:text-6xl font-arabic text-primary">
-                  {config.families.couple2.groomArabic} , {config.families.couple2.brideArabic}
-                </h3>
-                <p className="text-2xl md:text-4xl font-accent text-primary">
-                  {config.families.couple2.groom} & {config.families.couple2.bride}
-                </p>
-              </div>
+                  <div className="space-y-2">
+                    <h3 className="text-4xl md:text-6xl font-arabic text-primary">
+                      {config.families.couple2.groomArabic} , {config.families.couple2.brideArabic}
+                    </h3>
+                    <p className="text-2xl md:text-4xl font-accent text-primary">
+                      {config.families.couple2.groom} & {config.families.couple2.bride}
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
             
             <p className="text-lg md:text-xl font-serif italic text-primary leading-relaxed max-w-2xl mx-auto">
-              May Allah bless these unions with سعادة (happiness), بركة (barakat), and رحمة (mercy).
+              {config.families.message}
             </p>
 
             <p className="text-lg md:text-xl font-sans opacity-80">

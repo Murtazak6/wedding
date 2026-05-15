@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Amiri, Montserrat } from "next/font/google";
 import "./globals.css";
-import { weddingConfig } from "@/config/weddingConfig";
 
 const amiri = Amiri({
   weight: ["400", "700"],
@@ -16,19 +15,6 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://wedding-invite-kankroliwala.netlify.app"),
-  title: weddingConfig.social.title,
-  description: weddingConfig.social.description,
-  openGraph: {
-    title: weddingConfig.social.title,
-    description: weddingConfig.social.description,
-    images: weddingConfig.social.images,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: weddingConfig.social.title,
-    description: weddingConfig.social.description,
-    images: weddingConfig.social.images,
-  },
 };
 
 export default function RootLayout({
